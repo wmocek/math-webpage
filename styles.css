@@ -116,6 +116,28 @@ nav {
     transform: translateY(-3px);
 }
 
+/* Basic styling for special nav buttons */
+.nav-links a[href="#testimonials"] {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.nav-links a[href="#booking"] {
+    background: #ff6b35;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.nav-links a[href="#testimonials"]:hover,
+.nav-links a[href="#booking"]:hover {
+    transform: translateY(-2px);
+}
+
 /* top-right CTA in nav */
 .nav-cta {
     display: inline-block;
@@ -584,58 +606,146 @@ h3 {
     background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
 }
 
+.services-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.services-header h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 .services-lead {
     text-align: center;
     color: #475569;
-    margin: 10px 0 30px;
+    font-size: 1.1rem;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(43, 108, 176, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(43, 108, 176, 0.15);
+}
+
+.service-card.featured {
+    border: 2px solid var(--secondary-color);
+    background: linear-gradient(135deg, #f5f9ff 0%, #ffffff 100%);
+}
+
+.service-card.featured::before {
+    content: "POPULAR";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.service-features li {
+    padding: 0.5rem 0;
+    color: #374151;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.service-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.services-cta {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(43, 108, 176, 0.05) 0%, rgba(49, 130, 206, 0.05) 100%);
+    border-radius: 20px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.services-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 20px;
-}
-
-.service-card {
-    background: linear-gradient(180deg, rgba(3,102,214,0.02), rgba(255,255,255,0.6));
-    border-radius: 14px;
-    padding: 24px;
-    text-align: left;
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
-    border: 1px solid rgba(3,102,214,0.04);
-    display:flex;
-    gap:16px;
-    align-items:flex-start;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 40px rgba(3,102,214,0.08);
-}
-
-.service-card h3 {
-    margin: 0 0 8px;
-    font-size: 18px;
+.services-cta h3 {
     color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
-.service-card p {
-    margin: 0;
+.services-cta p {
     color: #4b5563;
-    font-size: 14px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
 }
 
-.icon-wrap {
-    flex: 0 0 56px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:12px;
-    background: rgba(43,108,176,0.06);
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .services-cta {
+        margin-top: 2rem;
+        padding: 2rem 1rem;
+    }
 }
 
 /* About */
@@ -1770,12 +1880,17 @@ html, body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* uwzględnia wysokość nav */
+  scroll-padding-top: 100px; /* uwzględnia wysokość nav */
 }
 
-/* Optional: highlight animation when scrolling to #clients */
-#clients {
-  scroll-margin-top: 40px;
+/* Scroll margins for all sections */
+#home,
+#services,
+#about,
+#testimonials,
+#contact,
+#booking {
+  scroll-margin-top: 100px;
 }
 
 #clients:target {
@@ -1808,5 +1923,13 @@ html {
   body::before {
     font-size: 18px;
     color: rgba(43, 108, 176, 0.03);
+  }
+  
+  /* Mobile styles for special nav buttons */
+  .nav-links a[href="#testimonials"],
+  .nav-links a[href="#booking"] {
+    margin: 3px 0;
+    display: block;
+    text-align: center;
   }
 }

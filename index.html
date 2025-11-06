@@ -19,9 +19,10 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Reviews ⭐</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#booking">🎁 FREE Intro Session</a></li>
                 </ul>
-                <a class="nav-cta" href="#booking">Try a Free Intro Session</a>
             </div>
 
             <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -58,7 +59,92 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="services-header">
-                <h2>AREAS OF EXPERTISE</h2>    <!-- Nowa sekcja bookingu -->
+                <h2>AREAS OF EXPERTISE</h2>
+                <p class="services-lead">Comprehensive mathematics education tailored to your learning needs</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <h3>High School Mathematics</h3>
+                    <p>Algebra, geometry, trigonometry, and pre-calculus. Perfect preparation for final exams, SATs, and university admission tests.</p>
+                    <ul class="service-features">
+                        <li>Quadratic equations & functions</li>
+                        <li>Geometric proofs & constructions</li>
+                        <li>Trigonometric identities</li>
+                        <li>Polynomial operations</li>
+                    </ul>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-icon">∫</div>
+                    <h3>Calculus & Advanced Topics</h3>
+                    <p>Differential and integral calculus, limits, derivatives, and mathematical analysis for university-level studies.</p>
+                    <ul class="service-features">
+                        <li>Limits & continuity</li>
+                        <li>Derivatives & applications</li>
+                        <li>Integration techniques</li>
+                        <li>Series & sequences</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏆</div>
+                    <h3>Math Olympiad Preparation</h3>
+                    <p>Advanced problem-solving techniques and competition strategies for mathematical olympiads and contests.</p>
+                    <ul class="service-features">
+                        <li>Problem-solving strategies</li>
+                        <li>Competition techniques</li>
+                        <li>Logic & proof methods</li>
+                        <li>Creative thinking approaches</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Exam Preparation</h3>
+                    <p>Targeted preparation for standardized tests including SAT, ACT, AP Mathematics, and Polish Matura exams.</p>
+                    <ul class="service-features">
+                        <li>SAT/ACT Math sections</li>
+                        <li>AP Calculus AB/BC</li>
+                        <li>Polish Matura exam</li>
+                        <li>University entrance tests</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👨‍🎓</div>
+                    <h3>University Mathematics</h3>
+                    <p>Support for undergraduate mathematics courses including linear algebra, statistics, and mathematical modeling.</p>
+                    <ul class="service-features">
+                        <li>Linear algebra & matrices</li>
+                        <li>Statistics & probability</li>
+                        <li>Discrete mathematics</li>
+                        <li>Mathematical modeling</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Remedial Mathematics</h3>
+                    <p>Building strong mathematical foundations for students who need to catch up or strengthen their basic skills.</p>
+                    <ul class="service-features">
+                        <li>Basic arithmetic & fractions</li>
+                        <li>Elementary algebra</li>
+                        <li>Foundation geometry</li>
+                        <li>Confidence building</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <h3>Ready to Excel in Mathematics?</h3>
+                <p>Every student learns differently. Let's find the approach that works best for you.</p>
+                <a href="#booking" class="cta-button">Schedule Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
     <section id="booking" class="booking-section">
         <div class="container">
             <h2>Schedule a Math Lesson</h2>
@@ -349,6 +435,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (e.key === 'Escape' && navLinks.classList.contains('open')) {
                     setNav(false);
                 }
+            });
+
+            // Simple smooth scrolling for ALL anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navLinks && navLinks.classList.contains('open')) {
+                            setNav(false);
+                        }
+                        
+                        // Simple scroll calculation
+                        var nav = document.querySelector('nav');
+                        var navHeight = nav ? nav.offsetHeight : 80;
+                        var targetY = targetElement.offsetTop - navHeight - 10;
+                        
+                        window.scrollTo({
+                            top: Math.max(0, targetY),
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
